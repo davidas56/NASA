@@ -1,6 +1,6 @@
 import React from 'react';
 import Stack from 'react-stackai';
-
+import { getImageOfTheDay } from './services/asset-retrieve';
 
 const navigation = [
   { name: 'Home', href: '#' },
@@ -10,6 +10,11 @@ const navigation = [
 ];
 
 function App() {
+  var url = 'https://api.nasa.gov/planetary/apod?api_key=' + process.env.REACT_APP_API_KEY;
+
+  React.useEffect(() => {
+    getImageOfTheDay(url);
+  }, [url]);
   return (
     <div className="bg-gray-100 min-h-screen">
       <Stack project="https://www.stack-ai.com/embed/34027e59-d065-4342-9eb1-6c96f5218eaa/10c156b0-cfb7-41b2-bc2e-33e047d89cc1/66def1885458b85d66c68a2d" />
