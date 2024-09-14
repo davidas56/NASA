@@ -4,7 +4,7 @@ import React from 'react';
 import Stack from 'react-stackai';
 import Logo from './assets/nasa.png';
 import backgroundImage from './assets/cover.jpg';
-import { getImageOfTheDay } from './services/asset-retrieve';
+import { getImageOfTheDay, getAssetsFromNasa } from './services/asset-retrieve';
 
 const navigation = [
   { name: 'Home', href: '#' },
@@ -19,6 +19,9 @@ function App() {
   const [title, setTitle] = React.useState('Image title');
   const [description, setDescription] = React.useState('');
   const [loading, setLoading] = React.useState(true);
+  const [dataAsset, setDataAsset] = React.useState([]);
+  const [place, setPlace] = React.useState('Mars');
+  const [assetD, setAssetD] = React.useState('Site map on mars');
   const getYesterdayDate = () => {
     const today = new Date();
     const yesterday = new Date(today);
@@ -29,12 +32,43 @@ function App() {
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
+  const handlePlaceChange = (event) => {
+    setPlace(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setAssetD(event.target.value);
+  };
+  const handleGetAssets = () => {
+    var urlAsset = 'https://images-api.nasa.gov/search?q=' + place + '&description=' + assetD;
+
+    console.log(urlAsset);
+
+    getAssetsFromNasa(urlAsset)
+      .then((data) => {
+        if (data) {
+          console.log(data.collection.items[0].links[0]);
+
+          setDataAsset(data.collection.items);
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching assets from nasa', error);
+      })
+  };
   var url = 'https://api.nasa.gov/planetary/apod?api_key=erIg4PFZATj0ClX50knV6Pu4U2EczBlvTgKVAKjQ' + '&date=' + selectedDate;
 
-  console.log(url);
-
+  const trimText = (text, maxWords) => {
+    const words = text.split(' ');
+    if (words.length > maxWords) {
+      return `${words.slice(0, maxWords).join(' ')}...`;
+    }
+    return text;
+  };
+  
   React.useEffect(() => {
     setLoading(true); 
+    handleGetAssets();
     getImageOfTheDay(url)
       .then((data) => {
         console.log(data);
@@ -69,15 +103,22 @@ function App() {
         </div>
         <div>
           <input
-            type="text"
-            placeholder="Place..."
-            className="p-1 rounded-lg border border-gray-300 mx-2"
+          type="text"
+          placeholder="Place..."
+          value={place} 
+          onChange={handlePlaceChange} 
+          className="p-1 rounded-lg border border-gray-300 mx-2"
           />
           <input
             type="text"
             placeholder="Description..."
+            value={assetD} 
+            onChange={handleDescriptionChange} 
             className="p-1 rounded-lg border border-gray-300 mx-2"
           />
+          <button class="p-1 bg-blue-500 hover:bg-blue-700 text-white font-bold mx-2 rounded" onClick={handleGetAssets}>
+            Get assets
+          </button>          
           <input
             type="date"
             value={selectedDate}
@@ -113,6 +154,36 @@ function App() {
           </div>
         </div>
       )}
+
+    {dataAsset?.length > 0 && <section className="bg-gray-100">
+      <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
+        <div className="overflow-x-auto">
+          <div className="flex flex-nowrap space-x-8">
+            {dataAsset?.map((item, index) => (
+            <div
+              key={index}
+              className="flex-none w-[400px] h-[250px] bg-white p-4 rounded-lg shadow-lg overflow-hidden"
+              >
+              <h3 className="text-xl font-bold text-gray-900 mt-4 truncate">
+                {item.data[0].title}
+              </h3>
+              <p className="mt-2 text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap">
+                {trimText(item.data[0].description, 100)}
+              </p>
+              {/* <img
+                src={item?.links[0].href}
+                alt={item.data[0].title}
+                className="rounded-lg"
+              /> */}
+              <p className="mt-1 text-gray-500 text-ellipsis overflow-hidden whitespace-nowrap">
+                Date: {new Date(item.data[0].date_created).toLocaleDateString()}
+              </p>
+            </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>}
   </div>
   );
 }
