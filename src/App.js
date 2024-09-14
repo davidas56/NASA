@@ -86,7 +86,7 @@ function App() {
       });
   }, [url]);
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-white">
       <Stack project="https://www.stack-ai.com/embed/34027e59-d065-4342-9eb1-6c96f5218eaa/10c156b0-cfb7-41b2-bc2e-33e047d89cc1/66def1885458b85d66c68a2d" />
     {/* Navbar */}
     <nav className="relative p-4">
@@ -136,7 +136,7 @@ function App() {
         </div>
       ) : (
         <div className="container mx-auto mt-8 grid grid-cols-2 gap-4">
-          <div className="flex justify-center items-center bg-white p-4 rounded-lg shadow-lg">
+          <div className="flex justify-center items-center bg-white p-4 rounded-lg shadow-inner">
             <img
               src={imageUrl?.length > 0 ? imageUrl : "https://via.placeholder.com/400"}
               alt={title}
@@ -144,7 +144,7 @@ function App() {
             />
           </div>
 
-          <div className="bg-white p-4 rounded-lg shadow-lg">
+          <div className="bg-white p-4 rounded-lg shadow-inner">
             <h2 className="text-2xl font-bold mb-4">
               {title?.length > 0 ? title : 'Title'}
             </h2>
@@ -155,9 +155,9 @@ function App() {
         </div>
       )}
 
-    {dataAsset?.length > 0 && <section className="bg-gray-100">
+    {dataAsset?.length > 0 && <section className="bg-white">
       <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto scrollbar-none">
           <div className="flex flex-nowrap space-x-8">
             {dataAsset?.map((item, index) => (
             <div
@@ -184,6 +184,12 @@ function App() {
         </div>
       </div>
     </section>}
+    <footer>
+    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+      <span class="text-base text-black sm:text-center dark:text-black capitalize self-center">© 2023 nasa sound of space™. All Rights Reserved.
+    </span>
+    </div>
+</footer>
   </div>
   );
 }
