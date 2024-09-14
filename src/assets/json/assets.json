@@ -1,0 +1,25 @@
+{
+    "href": "https://images-assets.nasa.gov/image/AS12-46-6832/collection.json",
+    "data": [
+      {
+        "center": "JSC",
+        "title": "Apollo 12 Mission image - View of lunar surface mound ",
+        "keywords": [
+          "Apollo",
+          "Apollo 12",
+          "Moon"
+        ],
+        "nasa_id": "AS12-46-6832",
+        "date_created": "1969-11-19T00:00:00Z",
+        "media_type": "image",
+        "description": "AS12-46-6832 (19 Nov. 1969) --- A close-up view of a lunar mound as photographed during the Apollo ."
+      }
+    ],
+    "links": [
+      {
+        "href": "https://images-assets.nasa.gov/image/AS12-46-6832/AS12-46-6832~thumb.jpg",
+        "rel": "preview",
+        "render": "image"
+      }
+    ]
+  }

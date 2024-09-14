@@ -9,7 +9,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
-    "react-stackai": "^0.1.10"
+    "react-stackai": "^0.1.10",
+    "tailwind-scrollbar": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
