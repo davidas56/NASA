@@ -5,6 +5,7 @@ import Stack from 'react-stackai';
 import Logo from './assets/nasa.png';
 import backgroundImage from './assets/cover.jpg';
 import { getImageOfTheDay, getAssetsFromNasa } from './services/asset-retrieve';
+import ReactPlayer from 'react-player';
 
 const navigation = [
   { name: 'Home', href: '#' },
@@ -22,6 +23,7 @@ function App() {
   const [dataAsset, setDataAsset] = React.useState([]);
   const [place, setPlace] = React.useState('Mars');
   const [assetD, setAssetD] = React.useState('Site map on mars');
+  const [videoLink, setVideoLink] = React.useState('https://www.youtube.com/watch?v=oUFJJNQGwhk');
   const getYesterdayDate = () => {
     const today = new Date();
     const yesterday = new Date(today);
@@ -39,6 +41,11 @@ function App() {
   const handleDescriptionChange = (event) => {
     setAssetD(event.target.value);
   };
+
+  const handleSetVideoLink = (event) => {
+    setVideoLink(event.target.value);
+  };
+
   const handleGetAssets = () => {
     var urlAsset = 'https://images-api.nasa.gov/search?q=' + place + '&description=' + assetD;
 
@@ -188,6 +195,24 @@ function App() {
         </div>
       </div>
     </section>}
+
+    <div className="container mx-auto mt-8 mb-8 grid grid-cols-2 gap-4">
+      <ReactPlayer url={videoLink} />
+      <div>
+        <h2 className="text-2xl font-bold mb-4">
+          THE SOUND OF SPACE SEARCH:
+        </h2>
+        <input
+          type="text"
+          placeholder="YOU CAN INPUT THE SOUND HERE:...."
+          value={videoLink} 
+          onChange={handleSetVideoLink} 
+          className="p-0.5 h-8 rounded-lg border border-gray-300 mx-2 w-full" 
+        />
+      </div>
+    </div>
+
+
     <footer>
       <div class="w-full mx-auto p-4 md:flex md:items-center md:justify-between bg-black	">
         <span class="text-base text-white sm:text-center dark:text-white capitalize align-middle justify-center">© 2023 nasa sound of space™. All Rights Reserved.
