@@ -54,7 +54,8 @@ function App() {
     getAssetsFromNasa(urlAsset)
       .then((data) => {
         if (data) {
-          console.log(data.collection.items[0].links[0]);
+          console.log('-------->');
+          console.log(data.collection.items[0].links[0].href);
 
           setDataAsset(data.collection.items);
         }
@@ -166,35 +167,41 @@ function App() {
         </div>
       )}
 
-    {dataAsset?.length > 0 && <section className="bg-white">
-      <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
-        <div className="overflow-x-auto scrollbar-none">
-          <div className="flex flex-nowrap space-x-8">
-            {dataAsset?.map((item, index) => (
+{dataAsset?.length > 0 && (
+  <section className="bg-transparent">
+    <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
+      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+        <div className="flex flex-nowrap space-x-8">
+          {dataAsset?.map((item, index) => (
             <div
               key={index}
-              className="flex-none w-[400px] h-[250px] bg-white p-4 rounded-lg shadow-lg overflow-hidden"
-              >
+              className="flex-none w-[400px] h-[350px] bg-white p-4 rounded-lg shadow-lg overflow-hidden"
+            >
               <h3 className="text-xl font-bold text-gray-900 mt-4 truncate">
                 {item.data[0].title}
               </h3>
               <p className="mt-2 text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap">
                 {trimText(item.data[0].description, 100)}
               </p>
-              {/* <img
-                src={item?.links[0].href}
-                alt={item.data[0].title}
-                className="rounded-lg"
-              /> */}
+              <div className="w-full h-[150px] overflow-hidden">
+                <img
+                  src={item.links?.[0]?.href || ''}
+                  alt={item.data?.[0]?.title || 'No title available'}
+                  className="rounded-lg w-full h-full object-cover"
+                />
+              </div>
               <p className="mt-1 text-gray-500 text-ellipsis overflow-hidden whitespace-nowrap">
                 Date: {new Date(item.data[0].date_created).toLocaleDateString()}
               </p>
             </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
-    </section>}
+    </div>
+  </section>
+)}
+
+
 
     <div className="container mx-auto mt-8 mb-8 grid grid-cols-2 gap-4">
       <ReactPlayer url={videoLink} />
@@ -207,7 +214,7 @@ function App() {
           placeholder="YOU CAN INPUT THE SOUND HERE:...."
           value={videoLink} 
           onChange={handleSetVideoLink} 
-          className="p-0.5 h-8 rounded-lg border border-gray-300 mx-2 w-full" 
+          className="p-0.5 h-8 rounded-lg border border-black border-spacing-5 mx-2 w-full" 
         />
       </div>
     </div>
