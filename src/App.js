@@ -119,12 +119,8 @@ function App() {
       });
   }, [url]);
   return (
-    <div className="min-h-screen bg-white">
-      <Stack project="https://www.stack-ai.com/embed/34027e59-d065-4342-9eb1-6c96f5218eaa/10c156b0-cfb7-41b2-bc2e-33e047d89cc1/66def1885458b85d66c68a2d" />
-      <div
-        className="h-screen absolute inset-0 bg-cover bg-no-repeat opacity-10"
-        style={{ backgroundImage: `url(${imageUrl})` }}
-      />
+  <div className="min-h-screen bg-black">
+    <Stack project="https://www.stack-ai.com/embed/34027e59-d065-4342-9eb1-6c96f5218eaa/10c156b0-cfb7-41b2-bc2e-33e047d89cc1/66def1885458b85d66c68a2d" />
     {/* Navbar */}
     <nav className="relative p-4">
       {/* Background Image */}
@@ -166,77 +162,88 @@ function App() {
       </div>
     </nav>
 
-    {/* Dividir la pantalla en dos partes */}
+    <div className="relative">
+  {/* Background Video */}
+  <video 
+    autoPlay 
+    loop 
+    muted 
+    className="absolute inset-0 w-full h-full object-cover"
+  >
+    <source src="/hero.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  {/* Main Content */}
+  <div className="relative">
     {loading ? (
-        <div className="flex justify-center items-center min-h-screen">
-          <div className="text-xl font-bold">Loading...</div>
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-xl font-bold">Loading...</div>
+      </div>
+    ) : (
+      <div className="container mx-auto mt-8 grid grid-cols-2 gap-4">
+        <div className="flex justify-center items-center bg-white p-4 rounded-lg shadow-inner">
+          <img
+            src={imageUrl?.length > 0 ? imageUrl : "https://via.placeholder.com/400"}
+            alt={title}
+            className="rounded-lg"
+          />
         </div>
-      ) : (
-        <div className="container mx-auto mt-8 grid grid-cols-2 gap-4">
-          <div className="flex justify-center items-center bg-white p-4 rounded-lg shadow-inner">
-            <img
-              src={imageUrl?.length > 0 ? imageUrl : "https://via.placeholder.com/400"}
-              alt={title}
-              className="rounded-lg"
-            />
-          </div>
 
-          <div className="bg-white p-4 rounded-lg shadow-inner">
-            <h2 className="text-2xl font-bold mb-4">
-              {title?.length > 0 ? title : 'Title'}
-            </h2>
-            <p className="text-gray-700">
-              {description?.length > 0 ? description : 'Description'}
-            </p>
-          </div>
-        </div>
-      )}
-
-{dataAsset?.length > 0 && (
-  <section className="bg-transparent">
-    <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
-      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-        <div className="flex flex-nowrap space-x-8">
-          {dataAsset?.map((item, index) => (
-              <div
-                key={index}
-                className="flex-none w-[400px] h-[350px] bg-white p-4 rounded-lg shadow-lg overflow-hidden"
-                onClick={() => openViewer(index)}
-              >
-              <h3 className="text-xl font-bold text-gray-900 mt-4 truncate">
-                {item.data[0].title}
-              </h3>
-              <p className="mt-2 text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap">
-                {trimText(item.data[0].description, 100)}
-              </p>
-              <div className="w-full h-[150px] overflow-hidden">
-                <img
-                  src={item.links?.[0]?.href || ''}
-                  alt={item.data?.[0]?.title || 'No title available'}
-                  className="rounded-lg w-full h-full object-cover"
-                  onClick={() => openViewer(index)}
-                />
-              </div>
-              <p className="mt-1 text-gray-500 text-ellipsis overflow-hidden whitespace-nowrap">
-                Date: {new Date(item.data[0].date_created).toLocaleDateString()}
-              </p>
-            </div>
-          ))}
+        <div className="bg-white p-4 rounded-lg shadow-inner">
+          <h2 className="text-2xl font-bold mb-4">
+            {title?.length > 0 ? title : 'Title'}
+          </h2>
+          <p className="text-gray-700">
+            {description?.length > 0 ? description : 'Description'}
+          </p>
         </div>
       </div>
-    </div>
-  </section>
-)}
+    )}
 
+    {dataAsset?.length > 0 && (
+      <section className="bg-transparent">
+        <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
+          <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+            <div className="flex flex-nowrap space-x-8">
+              {dataAsset?.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex-none w-[400px] h-[350px] bg-white p-4 rounded-lg shadow-lg overflow-hidden"
+                  onClick={() => openViewer(index)}
+                >
+                  <h3 className="text-xl font-bold text-gray-900 mt-4 truncate">
+                    {item.data[0].title}
+                  </h3>
+                  <p className="mt-2 text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap">
+                    {trimText(item.data[0].description, 100)}
+                  </p>
+                  <div className="w-full h-[150px] overflow-hidden">
+                    <img
+                      src={item.links?.[0]?.href || ''}
+                      alt={item.data?.[0]?.title || 'No title available'}
+                      className="rounded-lg w-full h-full object-cover"
+                      onClick={() => openViewer(index)}
+                    />
+                  </div>
+                  <p className="mt-1 text-gray-500 text-ellipsis overflow-hidden whitespace-nowrap">
+                    Date: {new Date(item.data[0].date_created).toLocaleDateString()}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
-
-    <div className="container mx-auto mt-8 mb-8 grid grid-cols-2 gap-4">
+    <div className="container mx-auto mt-8 mb-8 grid grid-cols-2 gap-4 bg-transparent rounded-lg">
       <ReactPlayer url={videoLink} />
       <div>
-        <h2 className="text-2xl font-bold mb-4">
+        <h2 className="text-2xl text-white font-bold mb-4">
           THE SOUND OF SPACE SEARCH
         </h2>
-        <h3 className="text-xl font-bold mb-4">
+        <h3 className="text-xl  text-white font-bold mb-4">
           Paste your link from chatbot here:
         </h3>
         <input
@@ -244,25 +251,29 @@ function App() {
           placeholder="YOU CAN INPUT THE SOUND HERE:...."
           value={videoLink} 
           onChange={handleSetVideoLink} 
-          className="p-0.5 h-8 rounded-lg border border-black border-spacing-5 mx-2 w-full" 
+          className="p-0.5 h-8 rounded-lg border border-black border-spacing-5 mx-2 w-[300px]" 
         />
       </div>
     </div>
 
-      {isOpen && (
-        <ImgsViewer
-          imgs={imageUrls}
-          isOpen={isOpen}
-          currImg={currentImage}
-          onClickPrev={gotoPrevImg}
-          onClickNext={gotoNextImg}
-          onClose={closeImgsViewer}
-        />
-      )}
+    {isOpen && (
+      <ImgsViewer
+        imgs={imageUrls}
+        isOpen={isOpen}
+        currImg={currentImage}
+        onClickPrev={gotoPrevImg}
+        onClickNext={gotoNextImg}
+        onClose={closeImgsViewer}
+      />
+    )}
+  </div>
+</div>
+
     <footer>
-      <div class="w-full mx-auto p-4 md:flex md:items-center md:justify-between bg-black	">
-        <span class="text-base text-white sm:text-center dark:text-white capitalize align-middle justify-center">© 2024 nasa sound of space™. All Rights Reserved.
-      </span>
+      <div class="w-full mx-auto p-4 flex items-center justify-center bg-black">
+        <span class="text-base text-white capitalize text-center">
+          © 2024 NASA Sound of Space™. All Rights Reserved.
+        </span>
       </div>
     </footer>
   </div>
