@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+<!-- PROJECT TITLE -->
+<h1 align="center">COSMIC HARMONY - THE SOUND OF SPACE</h1>
+<div id="header" align="center">
+</div>
+<h2 align="center">
+ Description
+</h2>
+<p align="center"><strong>Introducing Cosmic Harmony:</strong>
+   CosmicHarmony is an educational website for students to explore the information about the sound of space. Learning through AI and NASA API could never be easier</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+<details>
+<summary>CosmicHarmony</summary>
 
-In the project directory, you can run:
+- [Application Description](#application-description)
+- [Try the App](#try-the-app)
+- [Technology Stack](#technology-stack)
+- [Features](#features)
+- [Usage](#usage)
+  - [Running Locally](#running-locally)
+  - [Deploying with Vercel](#deploying-with-kubernetes)
+- [Authors](#authors)
+- [License](#license)
 
-### `npm start`
+</details>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Try the App
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You can try the deployed app here: [CosmicHarmony](https://soundofspace.vercel.app/)
 
-### `npm test`
+## Technology Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Technology   | Description                                      |
+| ------------ | ------------------------------------------------ |
+| React    | Open-source app framework for web development       |
+| Vercel       | Deployed to cloud |
+| NASA API       | API dataset for space information         |
+| Stack AI        | SAAS for AI solution implemented     |
+| HTML/CSS     | For structuring and styling the app's interface   |
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **NASA image of the Day**:<br> Cosmic Harmony presents the image of the day , you can also select the day to see the display of NASA gallery
+- **NASA showing the statistic of events**:<br> User can type in the place & description to see images about events.
+- **Real-Time AI chatbot**:<br> The app offers immediate suggestion and recommendations about the cosmic information about the sound of space
+- **Cross-Platform Compatibility**:<br> Cosmic Harmony is designed to work seamlessly across different devices, ensuring accessibility and ease of use.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+### Running Locally
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To run the app locally, follow these steps:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Clone the repository:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   git clone https://github.com/davidas56/NASA
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   cd NASA
 
-## Learn More
+2. **Install dependencies:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Make sure you have Node v18 or higher installed. Then install the required Npm packages:
+    
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+    yarn
+```
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Run the app:**
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```  
+  yarn start
+```
 
-### Making a Progressive Web App
+### Deploying with Vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. **Ensure you have a Vercel account available.**
 
-### Advanced Configuration
+2. **Apply the Kubernetes manifests:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+    vercel deploy
+```
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Authors
 
-### `npm run build` fails to minify
+| Name               | Link                                      |
+| ------------------ | ----------------------------------------- |
+| Hoang Nguyen Van | [GitHub](https://github.com/hoangnv170752) |
+| Davidas | [GitHub](https://github.com/davidas56) |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
