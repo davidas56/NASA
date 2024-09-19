@@ -38,6 +38,7 @@ You can try the deployed app here: [CosmicHarmony](https://soundofspace.vercel.a
 | NASA API       | API dataset for space information         |
 | Stack AI        | SAAS for AI solution implemented     |
 | HTML/CSS     | For structuring and styling the app's interface   |
+| Tailwind     | For structuring and styling the app's interface   |
 
 
 ## Features
@@ -67,6 +68,7 @@ Make sure you have Node v18 or higher installed. Then install the required Npm p
 
 ```
     yarn
+    npm
 ```
 
 
@@ -75,6 +77,7 @@ Make sure you have Node v18 or higher installed. Then install the required Npm p
 
 ```  
   yarn start
+  npm  start
 ```
 
 ### Deploying with Vercel
