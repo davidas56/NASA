@@ -136,7 +136,7 @@ function App() {
       <div className="relative container mx-auto flex justify-between items-center">
         <div className="text-white text-xl font-bold flex flex-row justify-center items-center">
           <img src={Logo} alt="Logo" className="w-16 h-16 object-contain" />
-          <div>NASA SOUND OF SPACE</div>
+          <div>COSMIC HARMONY SOUND OF SPACE</div>
         </div>
         <div>
           <input
