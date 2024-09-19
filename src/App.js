@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-useless-concat */
 /* eslint-disable no-use-before-define */
 import React from 'react';
@@ -6,6 +7,7 @@ import Logo from './assets/nasa.png';
 import backgroundImage from './assets/cover.jpg';
 import { getImageOfTheDay, getAssetsFromNasa } from './services/asset-retrieve';
 import ReactPlayer from 'react-player';
+import ImgsViewer from "react-images-viewer";
 
 const navigation = [
   { name: 'Home', href: '#' },
@@ -24,6 +26,25 @@ function App() {
   const [place, setPlace] = React.useState('Mars');
   const [assetD, setAssetD] = React.useState('Site map on mars');
   const [videoLink, setVideoLink] = React.useState('https://www.youtube.com/watch?v=oUFJJNQGwhk');
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [currentImage, setCurrentImage] = React.useState(0);
+  const [imageUrls, setImageUrls] = React.useState([]);
+   const openViewer = (index) => {
+    setCurrentImage(index);
+    setIsOpen(true);
+  };
+
+  const closeImgsViewer = () => {
+    setIsOpen(false);
+  };
+
+  const gotoPrevImg = () => {
+    setCurrentImage(prevIndex => Math.max(prevIndex - 1, 0));
+  };
+
+  const gotoNextImg = () => {
+    setCurrentImage(prevIndex => Math.min(prevIndex + 1, imageUrls.length - 1));
+  };
   const getYesterdayDate = () => {
     const today = new Date();
     const yesterday = new Date(today);
@@ -58,6 +79,10 @@ function App() {
           console.log(data.collection.items[0].links[0].href);
 
           setDataAsset(data.collection.items);
+          const urls = data.collection.items?.map(item => ({
+            src: item.links?.[0]?.href || ''
+          }));
+          setImageUrls(urls);
         }
       })
       .catch((error) => {
@@ -173,10 +198,11 @@ function App() {
       <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
         <div className="flex flex-nowrap space-x-8">
           {dataAsset?.map((item, index) => (
-            <div
-              key={index}
-              className="flex-none w-[400px] h-[350px] bg-white p-4 rounded-lg shadow-lg overflow-hidden"
-            >
+              <div
+                key={index}
+                className="flex-none w-[400px] h-[350px] bg-white p-4 rounded-lg shadow-lg overflow-hidden"
+                onClick={() => openViewer(index)}
+              >
               <h3 className="text-xl font-bold text-gray-900 mt-4 truncate">
                 {item.data[0].title}
               </h3>
@@ -188,6 +214,7 @@ function App() {
                   src={item.links?.[0]?.href || ''}
                   alt={item.data?.[0]?.title || 'No title available'}
                   className="rounded-lg w-full h-full object-cover"
+                  onClick={() => openViewer(index)}
                 />
               </div>
               <p className="mt-1 text-gray-500 text-ellipsis overflow-hidden whitespace-nowrap">
@@ -207,8 +234,11 @@ function App() {
       <ReactPlayer url={videoLink} />
       <div>
         <h2 className="text-2xl font-bold mb-4">
-          THE SOUND OF SPACE SEARCH:
+          THE SOUND OF SPACE SEARCH
         </h2>
+        <h3 className="text-xl font-bold mb-4">
+          Paste your link from chatbot here:
+        </h3>
         <input
           type="text"
           placeholder="YOU CAN INPUT THE SOUND HERE:...."
@@ -219,7 +249,16 @@ function App() {
       </div>
     </div>
 
-
+      {isOpen && (
+        <ImgsViewer
+          imgs={imageUrls}
+          isOpen={isOpen}
+          currImg={currentImage}
+          onClickPrev={gotoPrevImg}
+          onClickNext={gotoNextImg}
+          onClose={closeImgsViewer}
+        />
+      )}
     <footer>
       <div class="w-full mx-auto p-4 md:flex md:items-center md:justify-between bg-black	">
         <span class="text-base text-white sm:text-center dark:text-white capitalize align-middle justify-center">© 2024 nasa sound of space™. All Rights Reserved.
