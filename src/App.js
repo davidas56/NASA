@@ -222,7 +222,7 @@ function App() {
 
     <footer>
       <div class="w-full mx-auto p-4 md:flex md:items-center md:justify-between bg-black	">
-        <span class="text-base text-white sm:text-center dark:text-white capitalize align-middle justify-center">© 2023 nasa sound of space™. All Rights Reserved.
+        <span class="text-base text-white sm:text-center dark:text-white capitalize align-middle justify-center">© 2024 nasa sound of space™. All Rights Reserved.
       </span>
       </div>
     </footer>
