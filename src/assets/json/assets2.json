@@ -1,0 +1,64 @@
+{
+  "figures": [
+    {
+      "name": "Katherine Johnson",
+      "details": "Katherine Johnson was a mathematician whose calculations of orbital mechanics were crucial to NASA's missions.",
+      "image": "https://th.bing.com/th/id/OIP.k8yXBCg91Uve6pMsQ5KadQHaJQ?rs=1&pid=ImgDetMain"
+    },
+    {
+      "name": "Mae Jemison",
+      "details": "Mae Jemison was the first African American woman to travel in space aboard the Space Shuttle Endeavour.",
+      "image": "https://th.bing.com/th/id/OIP.DK8Rdo6-nJ7k2zZ8JtTdZwHaE8?rs=1&pid=ImgDetMain"
+    },
+    {
+      "name": "Sally Ride",
+      "details": "Sally Ride was the first American woman in space, flying aboard the Space Shuttle Challenger.",
+      "image": "https://th.bing.com/th/id/OIP.LqAw9ClfV-l4BREOJpg7UQHaJZ?rs=1&pid=ImgDetMain"
+    },
+    {
+      "name": "Neil Armstrong",
+      "details": "Neil Armstrong was the first person to walk on the Moon during the Apollo 11 mission in 1969.",
+      "image": "https://cdn.britannica.com/72/163272-050-1C5BC2B7/Neil-Armstrong-American.jpg"
+    },
+    {
+      "name": "Yuri Gagarin",
+      "details": "Yuri Gagarin was the first human to journey into outer space and orbit the Earth aboard Vostok 1 in 1961.",
+      "image": "https://th.bing.com/th/id/R.7766ccd75d8210d1de3dd1e1366ce404?rik=mvk4WBiavQIIRA&pid=ImgRaw&r=0"
+    },
+    {
+      "name": "Buzz Aldrin",
+      "details": "Buzz Aldrin was the second person to walk on the Moon, following Neil Armstrong during the Apollo 11 mission.",
+      "image": "https://th.bing.com/th/id/R.e86f4eeea9c22ee6849c29a67fc30c9a?rik=iVs5Dge84nTLkA&pid=ImgRaw&r=0"
+    },
+    {
+      "name": "Valentina Tereshkova",
+      "details": "Valentina Tereshkova was the first woman to fly in space, orbiting the Earth aboard Vostok 6 in 1963.",
+      "image": "https://example.com/images/valentina-tereshkova.jpg"
+    },
+    {
+      "name": "John Glenn",
+      "details": "John Glenn was the first American to orbit the Earth, and later became the oldest person to fly in space at the age of 77.",
+      "image": "https://example.com/images/john-glenn.jpg"
+    },
+    {
+      "name": "Wernher von Braun",
+      "details": "Wernher von Braun was a German-American aerospace engineer who developed the rockets that sent humans to the Moon.",
+      "image": "https://example.com/images/wernher-von-braun.jpg"
+    },
+    {
+      "name": "Alan Shepard",
+      "details": "Alan Shepard was the first American in space and later walked on the Moon as part of Apollo 14.",
+      "image": "https://example.com/images/alan-shepard.jpg"
+    },
+    {
+      "name": "Christa McAuliffe",
+      "details": "Christa McAuliffe was a schoolteacher who was selected to be the first civilian astronaut aboard the Space Shuttle Challenger.",
+      "image": "https://example.com/images/christa-mcauliffe.jpg"
+    },
+    {
+      "name": "Georgy Dobrovolski",
+      "details": "Georgy Dobrovolski was a Soviet cosmonaut and the commander of Soyuz 11, the spaceflight that ended tragically when the crew perished.",
+      "image": "https://example.com/images/georgy-dobrovolski.jpg"
+    }
+  ]
+}
